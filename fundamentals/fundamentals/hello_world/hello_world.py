@@ -1,11 +1,11 @@
 # 1. TASK: print "Hello World"
 print("Hello World")
 # 2. print "Hello Noelle!" with the name in a variable
-name = "Noelle"
+name = "Wei Lee"
 print("Hello World", name, "!")	# with a comma
-print("Hello World" + name)	# with a +
+print("Hello World" + name + "!")	# with a +
 # 3. print "Hello 42!" with the number in a variable
-name = 42
+name = 99
 print("Hello World", name, "!")	# with a comma
 # print("Hello World" + 42 + "!")	# with a +	-- this one should give us an error!
 # 4. print "I love to eat sushi and pizza." with the foods in variables
