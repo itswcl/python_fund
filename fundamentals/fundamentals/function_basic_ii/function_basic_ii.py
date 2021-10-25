@@ -35,10 +35,10 @@ def values_greater_than_second(list):
     if len(list) < 2:
         return False
     else:
-        print(list[2])
         for i in list:
-            if i >= list[2]:
+            if i > list[1]:
                 result.append(i)
+        print(len(result)) # log the total number
         return result
 """
 This Length, That Value - Write a function that accepts two integers as parameters:
