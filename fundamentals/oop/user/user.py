@@ -1,43 +1,47 @@
-class User():
-    def __init__(self, name, balance):
+class User:
+    def __init__(self, name):
         self.name = name
-        self.balance = balance
+        self.balance = 0
 
     def deposit(self, amount):
         self.balance += amount
+        self.display_user_balance()
 
     def withdraw(self, amount):
         self.balance -= amount
+        self.display_user_balance()
 
     def display_user_balance(self):
-        print(self.balance)
+        print(f"{self.name} Your balance is ${self.balance}")
 
     def transfer_money(self, amount, destination):
         self.balance -= amount
         destination.balance += amount
+        self.display_user_balance()
+        destination.display_user_balance()
 
 
-adrien = User("Adrien", 500)
-john = User("John", 1000)
-wayne = User("Wayne", 100)
+adrien = User("Adrien")
+john = User("John")
+wayne = User("Wayne")
 
-adrien.deposit(50)
-adrien.deposit(100)
-adrien.deposit(200)
+adrien.deposit(500)
+adrien.deposit(1000)
+adrien.deposit(2000)
 adrien.withdraw(100)
 
-john.deposit(50)
-john.deposit(100)
+john.deposit(500)
+john.deposit(1000)
 john.withdraw(50)
 john.withdraw(150)
 john.display_user_balance()
 
-wayne.deposit(100)
+wayne.deposit(1000)
 wayne.withdraw(100)
 wayne.withdraw(50)
 wayne.withdraw(50)
 wayne.display_user_balance()
 
 john.transfer_money(100, wayne)
-john.display_user_balance()
-wayne.display_user_balance()
+# john.display_user_balance()
+# wayne.display_user_balance()
