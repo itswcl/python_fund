@@ -38,6 +38,8 @@ class User:
             "saving": BankAccount(0.05, 5000),
             "checking": BankAccount(0.01, 1000)
         }
+    def display_user_balance(self):
+        print(f"{self.name} Your Checking is ${self.account['checking'].balance} and Saving is ${self.account['saving'].balance}")
 
     def transfer_money(self, amount, destination):
         self.balance -= amount
@@ -46,13 +48,12 @@ class User:
         return self
 
 andrew = User("andrew")
-# print(andrew.name)
-# print(andrew.account["saving"].balance)
-# print(andrew.account["checking"].balance)
-# andrew.account["checking"].desposit(100)
-# andrew.account["checking"].withdraw(50)
-# andrew.account["saving"].desposit(5000)
-# andrew.account["checking"].display_account_info()
-# andrew.account["saving"].display_account_info()
+print(andrew.name)
+print(andrew.account["saving"].balance)
+print(andrew.account["checking"].balance)
+andrew.account["checking"].desposit(100)
+andrew.account["checking"].withdraw(50)
+andrew.account["saving"].desposit(5000)
 andrew.account["checking"].display_account_info()
 andrew.account["saving"].display_account_info()
+andrew.display_user_balance()
