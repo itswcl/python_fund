@@ -10,20 +10,26 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
-        self.balance -= amount
+        if self.balance < amount:
+            self.balance -= 5
+            print("Insufficient funds: Charging a $5 fee")
+        else:
+            self.balance -= amount
         return self
 
     def display_account_info(self):
         print(f"Balance: ${self.balance}")
+        return self
 
     def yield_interest(self):
-        self.balance += self.balance * self.int_rate
+        if self.balance > 0:
+            self.balance += self.balance * self.int_rate
         return self
 
     @classmethod
     def display_accounts(cls):
-        for value in cls.all_accounts:
-            print(value)
+        for account in cls.all_accounts:
+            account.display_account_info() # access each account status
 
 andrew = BankAccount(0.015, 10000)
 way = BankAccount(0.015, 5000)
