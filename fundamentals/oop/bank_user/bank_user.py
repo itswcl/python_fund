@@ -42,8 +42,8 @@ class User:
         print(f"{self.name} Your Checking is ${self.account['checking'].balance} and Saving is ${self.account['saving'].balance}")
 
     def transfer_money(self, amount, destination):
-        self.balance -= amount
-        destination.balance += amount
+        self.account['checking'].balance -= amount
+        destination.account['checking'].balance += amount
         destination.display_user_balance()
         return self
 
