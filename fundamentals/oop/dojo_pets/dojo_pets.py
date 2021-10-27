@@ -7,7 +7,7 @@ class Ninja:
         self.last_name = last_name
         self.treats = treats
         self.pet_food = pet_food
-        self.pet = Pet(name="", type="", tricks="", health=0, energy=0)
+        self.pet = Pet(name="", type="", tricks="")
 # implement the following methods:
 # walk() - walks the ninja's pet invoking the pet play() method
     def walk(self):

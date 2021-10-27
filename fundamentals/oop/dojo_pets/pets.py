@@ -1,11 +1,11 @@
 class Pet:
 # implement __init__( name , type , tricks ):
-    def __init__(self, name, type, tricks, health=0, energy=0):
+    def __init__(self, name, type, tricks):
         self.name = name
         self.type = type
         self.tricks = tricks
-        self.health = health
-        self.energy = energy
+        self.health = 100
+        self.energy = 50
 # implement the following methods:
 # sleep() - increases the pets energy by 25
     def sleep(self):
