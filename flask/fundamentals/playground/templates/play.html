@@ -9,10 +9,9 @@
 <body>
     <h1 style="text-align: center;">Welcome!</h1>
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap;" id="container">
-
         {% if num %}
             {% for box in range(0, num) %}
-                <div style="background: chartreuse;
+                <div style="background: {{color}};
                     align-items: center;
                     height: 100px;
                     width: 200px;
@@ -21,15 +20,15 @@
                 </div>
             {% endfor %}
         {% else %}
-        {% for box in range(0, 3) %}
-            <div style="background: chartreuse;
-                        align-items: center;
-                        height: 100px;
-                        width: 200px;
-                        margin: 10px;
-                        border: 1px solid black;">
-            </div>
-        {% endfor %}
+            {% for box in range(0, 3) %}
+                <div style="background: blue;
+                            align-items: center;
+                            height: 100px;
+                            width: 200px;
+                            margin: 10px;
+                            border: 1px solid black;">
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 </body>

@@ -10,9 +10,9 @@ def hello_world():
 def play_default():
     return render_template("play.html")
 
-@app.route("/play/<int:num>")
-def play_number(num):
-    return render_template("play.html",num=num)
+# @app.route("/play/<int:num>")
+# def play_number(num):
+#     return render_template("play.html",num=num)
 
 @app.route("/play/<int:num>/<string:color>")
 def play_number_color(num, color):
