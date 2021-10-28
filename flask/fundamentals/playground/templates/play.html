@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Welcome!</h1>
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;" id="container">
+
+        {% if num %}
+            {% for box in range(0, num) %}
+                <div style="background: chartreuse;
+                    align-items: center;
+                    height: 100px;
+                    width: 200px;
+                    margin: 10px;
+                    border: 1px solid black;">
+                </div>
+            {% endfor %}
+        {% else %}
+        {% for box in range(0, 3) %}
+            <div style="background: chartreuse;
+                        align-items: center;
+                        height: 100px;
+                        width: 200px;
+                        margin: 10px;
+                        border: 1px solid black;">
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
