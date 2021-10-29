@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+table, thead, tr {
+    font-size: 20px;
+    color: yellow;
+    width: 400px;
+    margin: 100px auto;
+    border: 1px solid black;
+    background-color: blue;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(207, 185, 227);
+    color: black;
+}
