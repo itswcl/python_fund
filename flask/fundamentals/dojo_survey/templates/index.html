@@ -11,14 +11,15 @@
 <body>
     <div class="container">
         <h1 class="display-1">Dojo Survey</h1>
-        <form class="d-flex flex-column" action="/" method="post">
+        <form class="d-flex flex-column" action="/submit" method="post">
             <div>
                 <label for="name">Your Name:</label>
-                <input type="text" name="name" id="">
+                <input type="text" name="name" id="" placeholder="Full Name">
             </div>
             <div>
                 <label for="location">Dojo Location</label>
                 <select name="location" id="">
+                    <option value="default" disabled selected>--Select A Location--</option>
                     <option value="chicago">Chicago</option>
                     <option value="seattle">Seattle</option>
                     <option value="online">Online</option>
@@ -29,6 +30,7 @@
             <div>
                 <label for="language">Favorite Language</label>
                 <select name="language" id="">
+                    <option value="default" disabled selected>--Select A Language--</option>
                     <option value="html">HTML</option>
                     <option value="css">CSS</option>
                     <option value="python">Python</option>
@@ -36,8 +38,26 @@
                     <option value="js">JavaScript</option>
                 </select>
             </div>
+            <div>
+                <label for="Season">Quarter</label>
+                    <input type="radio" name="season" id="">
+                    <label for="">Spring</label>
+                    <input type="radio" name="season" id="">
+                    <label for="">Summer</label>
+                    <input type="radio" name="season" id="">
+                    <label for="">Fall</label>
+                    <input type="radio" name="season" id="">
+                    <label for="">Winter</label>
+            </div>
+            <div>
+                <label for="Season">device</label>
+                <input type="checkbox" name="device" id="">
+                <label for="">Mac</label>
+                <input type="checkbox" name="device" id="">
+                <label for="">Windows</label>
+            </div>
                 <label for="comment">Comment (optional):</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="comment" id="" cols="30" rows="10"></textarea>
             <input type="submit" value="submit">
         </form>
     </div>
