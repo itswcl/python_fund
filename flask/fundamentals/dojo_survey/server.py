@@ -8,7 +8,7 @@ def index():
 
 @app.route("/result")
 def result():
-    return render_template("result.html")
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)
