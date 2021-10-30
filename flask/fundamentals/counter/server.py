@@ -19,17 +19,19 @@ def form_submit():
 @app.route("/clear")
 def clear_out():
     session["click"] = 0
-    render_template("index.html", number=session["click"])
+    render_template("index.html", number1=session["click"])
     return redirect("/")
 
-@app.route("/", methods=["POST"])
+@app.route("/click", methods=["POST"])
 def form_click():
     if request.form["click"] == "click":
         session["click"] += 1
     elif request.form["click"] == "reset":
         session["click"] = 0
     elif request.form["click"] == "custom view":
-        session["click"] += int(request.form["user_input"])
+        # session["user_click"] = request.form["user_input"]
+        # print(session["user_click"])
+        session["click"] += int(request.form["user_input"]) - 1
 
     render_template("index.html", number=session["click"])
     return redirect("/")
