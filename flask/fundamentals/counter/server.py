@@ -26,9 +26,10 @@ def clear_out():
 def form_click():
     if request.form["click"] == "click":
         session["click"] += 1
-    else:
-        request.form["click"] == "reset"
+    elif request.form["click"] == "reset":
         session["click"] = 0
+    elif request.form["click"] == "custom view":
+        session["click"] += int(request.form["user_input"])
 
     render_template("index.html", number=session["click"])
     return redirect("/")
