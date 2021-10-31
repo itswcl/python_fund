@@ -6,7 +6,8 @@ app.secret_key = "testtest and test"
 @app.route("/")
 def index():
     session["random_number"] = random.randint(1, 100)
-    print(session["random_number"])
+    # print(session["random_number"])
+    # print(session.clear)
     return render_template("index.html")
 
 @app.route("/submit", methods=["POST"])
