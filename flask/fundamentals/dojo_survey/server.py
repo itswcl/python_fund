@@ -27,6 +27,7 @@ def result():
     comment = session["comment"]
     season = session["season"]
     device = session["device"]
+
     return render_template("result.html",
         name = name,
         location = location,
