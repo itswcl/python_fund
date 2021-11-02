@@ -19,7 +19,7 @@ def submit_number():
 def result():
     user_input = int(session["user_input"])
     random_number = int(session["random_number"])
-    print(random_number)
+    # print(random_number)
     if user_input > random_number:
         message = " INPUT - LESSER"
         bg_color = "red"
@@ -40,7 +40,7 @@ def result():
 
 @app.route("/reset", methods=["GET"])
 def reset():
-    return index()
+    return index() # either redirect/rendertemp
 
 if __name__ == "__main__":
     app.run(debug=True)
