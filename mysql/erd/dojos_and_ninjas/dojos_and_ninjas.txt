@@ -1,0 +1,34 @@
+INSERT INTO dojos (name, created_at, updated_at)
+VALUE ('firstname', NOW(), NOW()),
+('secondname', NOW(), NOW()),
+('thirdname', NOW(), NOW());
+
+DELETE FROM dojos LIMIT 3;
+
+INSERT INTO dojos (name, created_at, updated_at)
+VALUE ('firstname', NOW(), NOW()),
+('secondname', NOW(), NOW()),
+('thirdname', NOW(), NOW());
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id)
+VALUE ('first_firstname', 'first_lastname', 12, NOW(), NOW(), 4),
+('second_firstname', 'second_lastname', 12, NOW(), NOW(), 4),
+('thrid_firstname', 'third_lastname', 12, NOW(), NOW(), 4);
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id)
+VALUE ('first_firstname', 'first_lastname', 12, NOW(), NOW(), 4),
+('second_firstname', 'second_lastname', 12, NOW(), NOW(), 4),
+('thrid_firstname', 'third_lastname', 12, NOW(), NOW(), 4);
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at,dojo_id)
+VALUE ('first_firstname', 'first_lastname', 12, NOW(), NOW(), 6),
+('second_firstname', 'second_lastname', 12, NOW(), NOW(), 6),
+('thrid_firstname', 'third_lastname', 12, NOW(), NOW(), 6);
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id = 4;
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id = 6
