@@ -1,0 +1,43 @@
+INSERT INTO books (name, created_at, updated_at)
+VALUE ('Jane Austen', NOW(), NOW()),
+('Emily Dickinson', NOW(), NOW()),
+('Fyodor Dostoevsky', NOW(), NOW()),
+('William Shakespeare', NOW(), NOW()),
+('Lau Tzu', NOW(), NOW());
+
+INSERT INTO books (title, num_of_pages, created_at, updated_at)
+VALUE ('C Sharp', 500, NOW(), NOW()),
+('Java', 500, NOW(), NOW()),
+('Python', 500, NOW(), NOW()),
+('PHP', 500, NOW(), NOW()),
+('Ruby', 500, NOW(), NOW());
+
+UPDATE books SET title = 'C #' WHERE title LIKE 'C%';
+
+UPDATE authors SET name = 'Bill Shakespeare' WHERE id = 4;
+
+INSERT INTO fav_books (author_id, book_id, created_at, updated_at)
+VALUE (3, 1, NOW(), NOW()), (3, 2, NOW(), NOW()), (3, 3, NOW(), NOW()), (3, 4, NOW(), NOW())
+
+INSERT INTO fav_books (author_id, book_id, created_at, updated_at)
+VALUE (4, 1, NOW(), NOW()), (4, 2, NOW(), NOW()), (4, 3, NOW(), NOW()), (4, 4, NOW(), NOW()), (4, 5, NOW(), NOW());
+
+SELECT * FROM authors
+JOIN fav_books ON authors.id = fav_books.author_id
+JOIN books ON books.id = fav_books.book_id
+WHERE books.id = 3;
+
+INSERT INTO authors (name, created_at, updated_at)
+VALUE ('Wei Lee', NOW(), NOW());
+INSERT INTO fav_books (author_id, book_id, created_at, updated_at)
+VALUE (6, 2, NOW(), NOW());
+
+SELECT * FROM books
+JOIN fav_books ON books.id = fav_books.book_id
+JOIN authors ON authors.id = fav_books.author_id
+WHERE authors.id = 3;
+
+SELECT * FROM authors
+JOIN fav_books ON authors.id = fav_books.author_id
+JOIN books ON books.id = fav_books.book_id
+WHERE books.id = 5;
