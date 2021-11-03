@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>USERS</title>
 </head>
 <body>
     <h1>USERS</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>email</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in all_users %} {# note all_users from server py line 12 #}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.created_at }}</td>
+                <td>{{ user.updated_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

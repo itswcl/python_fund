@@ -17,7 +17,7 @@ class User:
         query = "SELECT * FROM users;"
 
         # query the db and save the result from query
-        results = connectToMySQL(users_schema).query_db(query)
+        results = connectToMySQL("users_schema").query_db(query) # note str name from the sql
         # work the data
         users = []
         # row is the dictionary

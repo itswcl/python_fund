@@ -48,5 +48,5 @@ class MySQLConnection:
 
 
 # connectToMySQL receives the database we're using and uses it to create an instance of MySQLConnection
-    def connectToMySQL(db):
-        return MySQLConnection(db)
+def connectToMySQL(db):
+    return MySQLConnection(db)
