@@ -8,31 +8,31 @@
     <title>USERS</title>
 </head>
 <body>
-    <h1>USERS</h1>
+    <h1>ADD USERS</h1>
     <table class="table">
         <thead>
             <tr>
-                <th>id</th>
                 <th>first_name</th>
                 <th>last_name</th>
                 <th>email</th>
-                <th>created_at</th>
-                <th>updated_at</th>
             </tr>
         </thead>
-        <tbody>
-            {% for user in all_users %} {# note all_users from server py line 12 #}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.created_at }}</td>
-                <td>{{ user.updated_at }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
     </table>
-    <a href="/users/add_page">add user</a>
+    <form action="" method="post">
+        <p>
+            first_name
+            <input type="text" name="first_name" id="">
+        </p>
+        <p>
+            last_name
+            <input type="text" name="last_name" id="">
+        </p>
+        <p>
+            email
+            <input type="email" name="email" id="">
+        </p>
+        <button type="button" class="btn btn-primary">ADD USER</button>
+    </form>
+    <a href="/">go back</a>
 </body>
 </html>
