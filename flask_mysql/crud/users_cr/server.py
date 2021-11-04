@@ -13,9 +13,15 @@ def index():
 
 @app.route("/users/add_page")
 def add_user_page():
-
     return render_template("add_user.html")
 
+
+@app.route("/users/add", methods=["POST"])
+def add_user():
+    print(request.form)
+    User.create(request.form)
+
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run(debug=True)
