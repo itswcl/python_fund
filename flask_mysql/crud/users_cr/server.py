@@ -11,6 +11,11 @@ def index():
     print(all_users)
     return render_template('users.html', all_users=all_users)
 
+@app.route('/users')
+def display():
+    all_users = User.get_all()
+    return render_template('users.html', all_users=all_users)
+
 
 @app.route("/users/add_page")
 def add_user_page():
