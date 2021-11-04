@@ -14,7 +14,9 @@
         <p>First_name : {{ user.first_name }}</p>
         <p>Last_name : {{ user.last_name }}</p>
         <p>Email : {{ user.email }}</p>
-
+        <p>Update By : {{ user.updated_at }}</p>
+        <a href="/users/{{ user.id }}/update_user" class="btn btn-primary">Update</a>
+        <a href="/users/{{ user.id }}/remove" class="btn btn-primary">Remove</a>
         <a href="/" class="btn btn-primary">go back</a>
     </div>
 </body>

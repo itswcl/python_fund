@@ -27,7 +27,8 @@ class User:
             users.append(User(row))
 
         # return
-        return users
+        print(users)
+        return results
 
 
 # CREATE

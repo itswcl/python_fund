@@ -14,11 +14,12 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>first_name</th>
-                    <th>last_name</th>
-                    <th>email</th>
-                    <th>created_at</th>
+                    <th>First_name</th>
+                    <th>Last_name</th>
+                    <th>Email</th>
+                    <th>Registered By</th>
                     <th>updated_at</th>
+                    <th>option</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,11 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.created_at }}</td>
                     <td>{{ user.updated_at }}</td>
+                    <td>
+                        <a href="/users/{{ user.id }}" class="btn btn-primary">Detail</a>
+                        <a href="/users/{{ user.id }}/update_user" class="btn btn-primary">Update</a>
+                        <a href="/users/{{ user.id }}/remove" class="btn btn-primary">Remove</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

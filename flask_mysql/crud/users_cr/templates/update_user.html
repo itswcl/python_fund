@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>USERS</title>
+</head>
+<body>
+    <div class="container">
+
+        <h1>UPDATE USERS</h1>
+
+        <form action="/users/{{ user.id }}/update_user_sent" method="post">
+            <p>
+                first_name
+                <input type="text" name="first_name" id="" value="{{ user.first_name }}">
+            </p>
+            <p>
+                last_name
+                <input type="text" name="last_name" id="" value="{{ user.last_name }}">
+            </p>
+            <p>
+                email
+                <input type="email" name="email" id="" value="{{ user.email }}">
+            </p>
+            <button type="submit" class="btn btn-primary">UPDATE</button>
+        </form>
+
+        <div><a href="/"  class="btn btn-primary">go back</a></div>
+    </div>
+</body>
+</html>
