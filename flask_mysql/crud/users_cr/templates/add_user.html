@@ -8,23 +8,27 @@
     <title>USERS</title>
 </head>
 <body>
-    <h1>ADD USERS</h1>
+    <div class="container">
 
-    <form action="/users/add" method="post">
-        <p>
-            first_name
-            <input type="text" name="first_name" id="">
-        </p>
-        <p>
-            last_name
-            <input type="text" name="last_name" id="">
-        </p>
-        <p>
-            email
-            <input type="email" name="email" id="">
-        </p>
-        <button type="submit" class="btn btn-primary">ADD USER</button>
-    </form>
-    <a href="/">go back</a>
+        <h1>ADD USERS</h1>
+
+        <form action="/users/add" method="post">
+            <p>
+                first_name
+                <input type="text" name="first_name" id="">
+            </p>
+            <p>
+                last_name
+                <input type="text" name="last_name" id="">
+            </p>
+            <p>
+                email
+                <input type="email" name="email" id="">
+            </p>
+            <button type="submit" class="btn btn-primary">ADD USER</button>
+        </form>
+
+        <div><a href="/"  class="btn btn-primary">go back</a></div>
+    </div>
 </body>
 </html>

@@ -46,7 +46,7 @@ class User:
         # and the 1 is different each user
         query = "SELECT * FROM users WHERE id = %(id)s"
         # result still the dictionary
-        results = connectToMySQL("user_schema").query_db(query, data)
+        results = connectToMySQL("users_schema").query_db(query, data)
 
         # double check if the result has only 1 value of dictionary
         # to avoid break from python
@@ -63,7 +63,7 @@ class User:
         # query
         query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, updated_at = NOW() WHERE id = %(id)s"
         # get the data in order for us to update from query
-        results = connectToMySQL("user_schema").query_db(query, data)
+        results = connectToMySQL("users_schema").query_db(query, data)
         # update
         return results
 
@@ -74,4 +74,4 @@ class User:
         # query
         query = "DELETE FROM users WHERE id = %(id)s"
         # don't need to use the data so we run the query
-        connectToMySQL("user_schema").query_db(query, data)
+        connectToMySQL("users_schema").query_db(query, data)
