@@ -4,10 +4,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Dojos and Ninjas</title>
-    </head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    </head>
     <body>
-        <h1>test</h1>
-    </body>
+        <div class="container">
+            <h1>Dojo School</h1>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>dojo name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dojo in dojos %} {# here we use dojo represent row #}
+                    <tr>
+                        <td class="table-light">{{ dojo.name }}</td> {# use the row of name #}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </body>
+    </div>
 </html>
