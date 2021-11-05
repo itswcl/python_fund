@@ -14,8 +14,8 @@ def submit():
     session["location"] = request.form["location"]
     session["language"] = request.form["language"]
     session["comment"] = request.form["comment"]
-    session["season"] = request.form["season"]
-    session["device"] = request.form["device"]
+    # session["season"] = request.form["season"]
+    # session["device"] = request.form["device"]
 
     return redirect ("/result")
 
@@ -25,14 +25,14 @@ def result():
     location = session["location"]
     language = session["language"]
     comment = session["comment"]
-    season = session["season"]
-    device = session["device"]
+    # season = session["season"]
+    # device = session["device"]
 
     return render_template("result.html",
         name = name,
         location = location,
         language = language,
         comment = comment,
-        season = season,
-        device = device
+        # season = season,
+        # device = device
         )
