@@ -10,6 +10,6 @@ class Ninja:
 
     @classmethod
     def create_new_ninja(cls, data):
-        query = "INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at)VALUE (%(first_name)s,%(last_name)s,%(age)s,NOW(),NOW())"
+        query = "INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)VALUE (%(first_name)s,%(last_name)s,%(age)s,NOW(),NOW(),%(dojo_id)s)"
         results = connectToMySQL("dojos_and_ninjas_schema").query_db(query, data) # getting back the row of results
         return results
