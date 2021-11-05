@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models.ninja import Ninja
 
 class Dojo:
     def __init__(self, data):
@@ -32,11 +33,17 @@ class Dojo:
     # READ - read data from specific dojo
     @classmethod
     def display_one(cls, data):
-        query = "SELECT * FROM dojos JOIN ninjas ON dojos.id = ninjas.dojo_id  WHERE dojos.id = %(id)s;"
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id  WHERE dojos.id = %(id)s;"
         print(query)
         results = connectToMySQL("dojos_and_ninjas_schema").query_db(query, data)
+
         if len(results) == 0:
             return False
 
+        dojo = Dojo(results[0])
 
-        return Dojo(results[0])
+        if results[0]["ninjas.id"] != None:
+            for row in results:
+                dojo.ninjas.append(Ninja(row))
+
+        return dojo

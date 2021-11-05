@@ -18,4 +18,4 @@ def create_new_dojo():
 
 @app.route("/dojos/<int:dojo_id>")
 def select_one_dojo(dojo_id):
-    return Dojo.display_one({'id': dojo_id})
+    return render_template("dojo.html", dojos = Dojo.display_one({"id": dojo_id}))
