@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Add New Ninja</h1>
+
+            <form action="/ninjas/formcreate" method="post">
+
+                <p>
+                    Dojo Location
+                    <select name="dojo_id" id="">
+                        {% for dojo in all_dojos %}
+                        <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p>
+                    First name
+                    <input type="text" name="first_name" id="">
+                </p>
+                <p>
+                    Last name
+                    <input type="text" name="last_name" id="">
+                </p>
+                <p>
+                    Age
+                    <input type="text" name="age" id="">
+                </p>
+                <button type="submit" class="btn btn-primary">Add Ninja</button>
+            </form>
+        </body>
+    </div>
+</html>

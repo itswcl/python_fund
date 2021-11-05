@@ -7,21 +7,29 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    </head>
     <body>
         <div class="container">
-            <h1>Dojo School</h1>
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for dojo in dojos %} {# here we use dojo represent row #}
-                    <tr>
-                        <td class="table-light">{{ dojo.name }}</td> {# use the row of name #}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <h1 class="text-center">Dojo School</h1>
+            <div class="row flex">
+                <form action="/dojos/formcreate" method="post" class="col-sm">
+                    <input type="text" class="text m-3" name="name">
+                    <button type="submit" class="btn btn-primary">Add Dojo</button>
+                </form>
+
+                <table class="table table-hover col-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Dojo Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dojo in dojos %} {# here we use dojo represent row #}
+                        <tr>
+                            <td class="table-light"><a href="/dojos/{{ dojo.id }}">{{ dojo.name }}</a></td> {# use the row of name #}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a href="/ninjas/form">Add Ninja</a>
         </body>
     </div>
 </html>
