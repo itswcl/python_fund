@@ -38,6 +38,8 @@
                     <option value="js">JavaScript</option>
                 </select>
             </div>
+
+
             <!-- <div class="form-check-inline">
                 <label for="Season" class="form-label">Quarter</label>
                     <input class="form-check-input" type="radio" name="season" id="" value="spring">
@@ -63,5 +65,12 @@
             <input class="btn btn-primary" type="submit" value="submit">
         </form>
     </div>
+    {% with messages = get_flashed_message() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>

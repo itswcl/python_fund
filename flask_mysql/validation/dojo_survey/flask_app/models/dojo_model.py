@@ -1,4 +1,6 @@
+from flask.app import Flask
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 
 class Dojo:
     def __init__(self, data):
@@ -18,8 +20,27 @@ class Dojo:
             dojos.append(Dojo(dojo))
         return dojos
 
+    @classmethod
     def create_dojo(cls, data):
         query = "INSERT INTO dojos (name, location, language, comment, created_at, updated_at) VALUE (%(name)s, %(location)s, %(language)s, %(comment)s, NOW(), NOW())"
 
         results = connectToMySQL("dojo_survey_schema").query_db(query, data)
         return results
+
+    @staticmethod
+    def validate_info(post_data):
+        is_valid = True
+
+        if len(post_data["name"]) < 3:
+            flash("giv me valid first and last name")
+            is_valid = False
+
+        if post_data["location"] == "default":
+            flash("pick your location")
+            is_valid = False
+
+        if post_data["language"] == "default":
+            flash("pick your language")
+            is_valid = False
+
+        return is_valid
