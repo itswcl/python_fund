@@ -14,6 +14,14 @@ def submit():
     if not Dojo.validate_info(request.form):
         return redirect ("/")
 
+    # {% with messages = get_flashed_message() %}
+    # {% if messages %}
+    #     {% for message in messages %}
+    #         <p>{{ message }}</p>
+    #     {% endfor %}
+    # {% endif %}
+    # {% endwith %}
+
     Dojo.create_dojo(request.form)
 
     session["name"] = request.form["name"]           # assign request value to session

@@ -32,7 +32,7 @@ class Dojo:
         is_valid = True
 
         if len(post_data["name"]) < 3:
-            flash("giv me valid first and last name")
+            flash("invalid first and last name")
             is_valid = False
 
         if not "location" in post_data:
