@@ -26,3 +26,9 @@ def add():
 def display_emails():
     all_emails = Email.all_email()
     return render_template("success.html", all_emails = all_emails)
+
+@app.route("/delete/<int:id>")
+def remove_emails(id):
+
+    Email.delete_email({"id": id})
+    return redirect("/success")

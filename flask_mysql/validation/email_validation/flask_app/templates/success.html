@@ -21,12 +21,14 @@
             <thead>
                 <tr>
                     <th>email</th>
+                    <th>option</th>
                 </tr>
             </thead>
             <tbody>
                 {% for email in all_emails %}
                     <tr>
                         <td>{{ email.email }}</td>
+                        <td><a href="/delete/{{ email.id }}">Delete</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
