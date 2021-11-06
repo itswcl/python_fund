@@ -5,10 +5,12 @@ from flask_app.models.dojo_model import Dojo
 
 @app.route("/")
 def index():
+
     return render_template("index.html")
 
 @app.route("/submit", methods=["POST"])
 def submit():
+
     if not Dojo.validate_info(request.form):
         return redirect ("/")
 

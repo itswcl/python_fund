@@ -35,11 +35,11 @@ class Dojo:
             flash("giv me valid first and last name")
             is_valid = False
 
-        if post_data["location"] == "default":
+        if not "location" in post_data:
             flash("pick your location")
             is_valid = False
 
-        if post_data["language"] == "default":
+        if not "language" in post_data:
             flash("pick your language")
             is_valid = False
 

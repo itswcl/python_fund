@@ -10,6 +10,13 @@
 </head>
 <body>
     <div class="container">
+        {% with messages = get_flashed_message() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
         <h1 class="display-1">Dojo Survey</h1>
         <form class="d-flex flex-column" action="/submit" method="post">
             <div>
@@ -65,12 +72,5 @@
             <input class="btn btn-primary" type="submit" value="submit">
         </form>
     </div>
-    {% with messages = get_flashed_message() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
 </body>
 </html>
