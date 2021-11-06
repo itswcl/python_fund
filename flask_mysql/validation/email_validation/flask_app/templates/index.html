@@ -11,8 +11,15 @@
     <div class="container text-center bg-info">
         <form class="form-group m-5 p-5" action="/email/add" method="post">
             <p>Email Address:
-                <input class="form-control" type="email" name="email" id="">
+                <input class="form-control" type="text" name="email" id="">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
             </p>
         </form>
     </div>

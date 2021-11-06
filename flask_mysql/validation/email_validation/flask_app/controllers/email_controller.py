@@ -13,5 +13,8 @@ def form():
 
 @app.route("/email/add", methods=["POST"]) # route for POST request
 def add():
+    if not Email.validate(request.form):
+        return redirect("/")
+
     Email.add_new_email(request.form)
     return redirect("/")
