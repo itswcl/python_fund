@@ -29,6 +29,5 @@ def display_emails():
 
 @app.route("/delete/<int:id>")
 def remove_emails(id):
-
     Email.delete_email({"id": id})
     return redirect("/success")

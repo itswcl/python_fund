@@ -41,7 +41,7 @@ class Email:
         results = connectToMySQL("email_schema").query_db(query ,data)
         return results
 
-    # Delete
+    # Delete - only need run the query function and no need return anything
     @classmethod
     def delete_email(cls, data):
         query = "DELETE FROM emails WHERE id = %(id)s"
@@ -62,5 +62,4 @@ class Email:
             if Email.one_email({"email": post_data["email"]}):
                 flash("email has been used")
                 is_valid = False
-
         return is_valid # result data if validated or not
