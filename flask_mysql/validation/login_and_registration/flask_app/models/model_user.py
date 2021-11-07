@@ -1,4 +1,6 @@
+from flask.app import Flask
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 import re
 
 class User:
@@ -22,6 +24,24 @@ class User:
         is_valid = True
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
+        if len(post_data["first_name"]) < 2:
+            flash("invalid first name")
+            is_valid = False
 
+        if len(post_data["last_name"]) < 2:
+            flash("invalid last name")
+            is_valid = False
+
+        if not EMAIL_REGEX.match(post_data["email"]):
+            flash("invalid email")
+            is_valid = False
+
+        if len(post_data["password"]) < 8:
+            flash("invalid password")
+            is_valid = False
+
+        if post_data["password"] != post_data["confirm_password"]:
+            flash("password not match")
+            is_valid = False
 
         return is_valid
