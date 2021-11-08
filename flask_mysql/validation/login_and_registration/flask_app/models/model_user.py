@@ -1,10 +1,18 @@
 from flask.app import Flask
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app import app
+
 from flask import flash
 import re
 
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(app)
+
+
+
 class User:
     def __init__(self, data):
+        self.id = data["id"]
         self.first_name = data["first_name"]
         self.last_name = data["last_name"]
         self.email = data["email"]
@@ -68,9 +76,29 @@ class User:
         if len(post_data["password"]) < 8:
             flash("invalid password")
             is_valid = False
+        elif post_data["password"].isalpha():
+            flash("at least 1 number required in password")
+            is_valid = False
+        elif not any(letter.isupper() for letter in post_data["password"]):
+            flash("at least 1 uppercase required in password")
+            is_valid = False
 
         if post_data["password"] != post_data["confirm_password"]:
             flash("password not match")
             is_valid = False
 
         return is_valid
+
+    @staticmethod
+    def log_in(post_data):
+        user = User.select_one_email({"email": post_data["email"]})
+
+        if not user:
+            flash("no user in the record")
+            return False
+
+        if not bcrypt.check_password_hash(user.password, post_data["password"]):
+            flash("wrong password")
+            return False
+
+        return True
