@@ -8,7 +8,7 @@ import re
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
-
+schema_file = "recipes_schema"
 
 class User:
     def __init__(self, data):
@@ -71,6 +71,7 @@ class User:
             if user:
                 flash("Try another email")
                 is_valid = False
+
 
         if len(post_data["password"]) < 8:
             flash("invalid password")

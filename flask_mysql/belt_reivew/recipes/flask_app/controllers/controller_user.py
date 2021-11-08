@@ -8,8 +8,8 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def index():
-    if User.log_in(request.form):
-        return redirect("/dashboard")
+    if "uuid" in session:
+        return redirect("dashboard")
 
     return render_template("index.html")
 
@@ -17,7 +17,7 @@ def index():
 @app.route("/user/form/create", methods=["POST"])
 def form_user_create():
     if not User.in_valid(request.form):
-        return redirect ("/")
+        return redirect("/")
 
     if "uuid" in session:
         return redirect("/dashboard")
@@ -55,7 +55,6 @@ def form_user_login():
         return redirect("/")
 
     user = User.select_one_email({"email": request.form["email"]})
-    # print(user)
     session["uuid"] = user.id
 
     return redirect("/dashboard")
