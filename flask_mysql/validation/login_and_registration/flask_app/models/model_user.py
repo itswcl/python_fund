@@ -11,9 +11,20 @@ class User:
         self.password = data["password"]
 
     # ADD CURD create update read delete
-    @classmethod
+    @classmethod # select by EMAIL
     def select_one_email(self,data):
         query = "SELECT * FROM users WHERE email = %(email)s"
+
+        results = connectToMySQL("registration_schema").query_db(query, data)
+
+        if len(results) == 0:
+            return False
+
+        return User(results[0])
+
+    @classmethod
+    def select_one_id(self,data):
+        query = "SELECT * FROM users WHERE id = %(id)s"
 
         results = connectToMySQL("registration_schema").query_db(query, data)
 

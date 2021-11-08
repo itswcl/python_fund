@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect,session
 
 from flask_app import app
 from flask_app.models.model_user import User
@@ -16,17 +16,19 @@ def form_user_create():
     if not User.in_valid(request.form):
         return redirect("/")
 
-    hash_password = bcrypt.generate_password_hash(request.form["password"])
-
     new_user = {
         **request.form,
-        "password": hash_password
+        # bcrypt the pass word for the user
+        "password": bcrypt.generate_password_hash(request.form["password"])
     }
 
-    User.create_user(new_user)
-    return redirect("/")
+    # save to session while creating the new user
+    session["uuid"] = User.create_user(new_user)
+
+    return redirect("/dashboard")
 
 # display the user on dashboard
-@app.route("/user/dashboard")
+@app.route("/dashboard")
 def dashboard():
-    pass
+    user = User.select_one_id({"id": session["uuid"]})
+    return render_template("dashboard.html", user = user)
