@@ -16,5 +16,17 @@ def form_user_create():
     if not User.in_valid(request.form):
         return redirect("/")
 
-    User.create_user(request.form)
+    hash_password = bcrypt.generate_password_hash(request.form["password"])
+
+    new_user = {
+        **request.form,
+        "password": hash_password
+    }
+
+    User.create_user(new_user)
     return redirect("/")
+
+# display the user on dashboard
+@app.route("/user/dashboard")
+def dashboard():
+    pass

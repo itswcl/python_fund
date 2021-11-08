@@ -12,6 +12,18 @@ class User:
 
     # ADD CURD create update read delete
     @classmethod
+    def select_one_email(self,data):
+        query = "SELECT * FROM users WHERE email = %(email)s"
+
+        results = connectToMySQL("registration_schema").query_db(query, data)
+
+        if len(results) == 0:
+            return False
+
+        return User(results[0])
+
+
+    @classmethod # create user
     def create_user(self, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s,%(last_name)s,%(email)s,%(password)s)"
 
@@ -35,6 +47,12 @@ class User:
         if not EMAIL_REGEX.match(post_data["email"]):
             flash("invalid email")
             is_valid = False
+        else:
+            user = User.select_one_email({"email": post_data["email"]})
+            if user:
+                flash("Try another email")
+                is_valid = False
+
 
         if len(post_data["password"]) < 8:
             flash("invalid password")
