@@ -1,7 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import user
+from flask_app.models.model_user import User
 
 class Recipe:
+    schema_file = "recipes_schema"
     def __init__(self, data):
         self.id = data["id"]
         self.name = data["name"]
@@ -18,21 +19,35 @@ class Recipe:
     # create
     @classmethod
     def create(cls, data):
-        pass
+        query = "INSERT INTO recipes (name, description,under_30,instruction,data_made_on,created_at,updated_at,user_id)\
+                VALUE (%(name)s, %(description)s, %(under_30)s, %(instruction)s, %(data_made_on)s, NOW(), NOW(), %(user.id)s);"
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
+
+        return results
 
     # Read many
-    def select_all(cls, data):
-        pass
+    @classmethod
+    def select_all(cls):
+        query = "SELECT * FROM recipes;"
+        results = connectToMySQL(cls.schema_file).query_db(query)
+
+        recipes = []
+        for row in results:
+            recipes.append(Recipe(row))
+        return recipes
 
     # Read one
+    @classmethod
     def select_one(cls, data):
         pass
 
     # update
+    @classmethod
     def update(cls, data):
         pass
 
     # delete
+    @classmethod
     def data(cls, data):
         pass
 

@@ -29,7 +29,20 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        {% for recipe in recipes %}
+                        <tr>
+                            <td>{{ recipe.name }}</td>
+                            <td>{{ recipe.under_30 }}</td>
+                            <td>{{ recipe.name }}</td>
+                            <td class="d-flex justify-content-around">
+                                <a href="/recipes/{{ recipe.id }}">View instructions</a>
+                                {% if logged_user.id == recipe.user.id %}
+                                <a href="/recipes/{{ recipe.id }}/edit">Edit</a>
+                                <a href="/recipes/{{ recipe.id }}/delete">Delete</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

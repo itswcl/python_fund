@@ -17,14 +17,6 @@ def index():
     return render_template("index.html")
 
 
-# display the user on dashboard
-@app.route("/dashboard")
-def dashboard():
-    if not "uuid" in session:
-        return redirect("/")
-
-    user = User.select_one_id({"id": session["uuid"]})
-    return render_template("dashboard.html", logged_user = user)
 
 # ----------------------- ACTION ROUTE -----------------------------------------------------
 
@@ -33,9 +25,6 @@ def dashboard():
 def form_user_create():
     if not User.in_valid(request.form):
         return redirect("/")
-
-    if "uuid" in session:
-        return redirect("/dashboard")
 
     new_user = {
         **request.form,

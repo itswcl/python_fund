@@ -27,17 +27,27 @@ class User:
     # create user
     @classmethod
     def create_user(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s,%(last_name)s,%(email)s,%(password)s)"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s,%(last_name)s,%(email)s,%(password)s);"
 
         results = connectToMySQL(cls.schema_file).query_db(query, data)
 
         return results
 
+    # read many by id
+    @classmethod
+    def select_all(cls):
+        query = "SELECT * FROM users;"
+        results = connectToMySQL(cls.schema_file).query_db(query)
+
+        users = []
+        for row in results:
+            users.append(User(row))
+        return users
 
     # read one by email
     @classmethod # select by EMAIL
     def select_one_email(cls,data):
-        query = "SELECT * FROM users WHERE email = %(email)s"
+        query = "SELECT * FROM users WHERE email = %(email)s;"
 
         results = connectToMySQL(cls.schema_file).query_db(query, data)
 
@@ -50,7 +60,7 @@ class User:
     # read one by id
     @classmethod
     def select_one_id(cls,data):
-        query = "SELECT * FROM users WHERE id = %(id)s"
+        query = "SELECT * FROM users WHERE id = %(id)s;"
 
         results = connectToMySQL(cls.schema_file).query_db(query, data)
 

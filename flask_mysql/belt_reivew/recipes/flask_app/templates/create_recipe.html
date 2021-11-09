@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>making recipe</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="header d-flex justify-content-between">
+                    <h1>Add New Recipe</h1>
+                    <div class="d-flex justify-content-around">
+                        <a class="m-3" href="/dashboard">Dashboard</a>
+                        <a class="m-3" href="/logout">Log out</a>
+                    </div>
+                </div>
+                <form class="form-group body d-flex justify-content-around">
+                    <div class="left">
+                        <label for="recipe_name">Name</label>
+                        <input type="text" name="recipe_name" id="" class="form-control">
+                        <label for="recipe_description">Description</label>
+                        <textarea class="form-control" name="recipe_description" id="" rows="3"></textarea>
+                        <label for="recipe_instruction">Instruction</label>
+                        <textarea class="form-control" name="recipe_instruction" id="" rows="3"></textarea>
+                    </div>
+                    <div class="right">
+                        <label for="data_made_on">Date Made On</label>
+                        <input type="date" name="data_made_on" id="">
+                        <div>
+                            <label for="under_30">Under 30 Minutes?</label>
+                            <input type="radio" name="under_30" id="" value="yes" checked>
+                            <label for="under_30">Yes</label>
+                            <input type="radio" name="under_30" id="" value="no">
+                            <label for="under_30">No</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
