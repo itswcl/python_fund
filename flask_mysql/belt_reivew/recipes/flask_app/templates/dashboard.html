@@ -9,27 +9,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container d-flex justify-content-around">
+        <div class="container">
+            <div class="header d-flex justify-content-between">
+                <h1>Welcome! {{ logged_user.first_name }}</h1>
+                <div class="d-flex justify-content-around">
+                    <a class="m-3" href="recipes/new">Create</a>
+                    <a class="m-3" href="/logout">Log out</a>
+                </div>
+            </div>
+            <div class="main">
+                <h3>These are the recipes</h3>
+                <!-- user info display -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Under 30 minutes?</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-            <!-- user info display -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>first name</th>
-                        <th>last name</th>
-                        <th>Email</th>
-                        <th>Option</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ user.first_name }}</td>
-                        <td>{{ user.last_name }}</td>
-                        <td>{{ user.email}}</td>
-                        <td><a href="/logout">Log out</a></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </body>

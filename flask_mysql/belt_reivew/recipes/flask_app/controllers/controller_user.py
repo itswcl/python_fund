@@ -24,7 +24,7 @@ def dashboard():
         return redirect("/")
 
     user = User.select_one_id({"id": session["uuid"]})
-    return render_template("dashboard.html", user = user)
+    return render_template("dashboard.html", logged_user = user)
 
 # ----------------------- ACTION ROUTE -----------------------------------------------------
 

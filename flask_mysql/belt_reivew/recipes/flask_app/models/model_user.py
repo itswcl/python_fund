@@ -18,6 +18,9 @@ class User:
         self.last_name = data["last_name"]
         self.email = data["email"]
         self.password = data["password"]
+        self.created_at = data["created_at"]
+        self.updated_at = data["updated_at"]
+        self.recipes = []
 
     # ADD CRUD create read update delete
 
@@ -99,7 +102,7 @@ class User:
 
     # log in validation
     @staticmethod
-    def log_in(post_data):
+    def login_validation(post_data):
         user = User.select_one_email({"email": post_data["email"]})
 
         if not user:
