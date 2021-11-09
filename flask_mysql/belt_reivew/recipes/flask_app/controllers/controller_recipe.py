@@ -24,6 +24,23 @@ def dashboard():
 def form_recipe():
     return render_template("create_recipe.html")
 
+# display the recipe
+@app.route("/recipes/<int:id>")
+def detail_recipe(id):
+    return render_template(
+        "detail_recipe.html",
+        recipe = Recipe.select_one({"id": id})
+    )
+
+# display the recipe
+@app.route("/recipes/<int:id>/edit")
+def edit_recipe(id):
+    return render_template(
+        "edit_recipe.html",
+        recipe = Recipe.select_one({"id": id})
+    )
+
+
 # ----------------------- ACTION ROUTE -----------------------------------------------------
 # create recipe
 @app.route("/recipes/create", methods=["POST"])

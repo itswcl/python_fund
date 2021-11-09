@@ -13,32 +13,34 @@
         <div class="container">
             <div class="header">
                 <div class="header d-flex justify-content-between">
-                    <h1>Add New Recipe</h1>
+                    <h1>Update {{ recipe.name }}</h1>
                     <div class="d-flex justify-content-around">
                         <a class="m-3" href="/dashboard">Dashboard</a>
                         <a class="m-3" href="/logout">Log out</a>
                     </div>
                 </div>
-                <form action="/recipes/create" method="post" class="form-group body d-flex justify-content-around">
+                <form action="/recipes/update" method="post" class="form-group body d-flex justify-content-around">
                     <div class="left">
                         <label for="recipe_name">Name</label>
-                        <input type="text" name="recipe_name" id="" class="form-control">
+                        <input type="text" name="recipe_name" id="" class="form-control" value="{{ recipe.name }}">
                         <label for="recipe_description">Description</label>
-                        <textarea class="form-control" name="recipe_description" id="" rows="3"></textarea>
+                        <textarea class="form-control" name="recipe_description" id="" rows="3">{{ recipe.description }}</textarea>
                         <label for="recipe_instruction">Instruction</label>
-                        <textarea class="form-control" name="recipe_instruction" id="" rows="3"></textarea>
+                        <textarea class="form-control" name="recipe_instruction" id="" rows="3">{{ recipe.instruction }}</textarea>
                     </div>
                     <div class="right">
                         <label for="data_made_on">Date Made On</label>
-                        <input type="date" name="data_made_on" id="">
+                        <input type="date" name="data_made_on" id="" value="{{ recipe.data_made_on }}">
                         <div>
                             <label for="under_30">Under 30 Minutes?</label>
+                            {% if recipe.under_30 == "yes" %}
+                            {% endif %}
                             <input type="radio" name="under_30" id="" value="yes">
                             <label for="under_30">Yes</label>
                             <input type="radio" name="under_30" id="" value="no">
                             <label for="under_30">No</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}

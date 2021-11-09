@@ -13,6 +13,9 @@ class Recipe:
         self.data_made_on = data["data_made_on"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+        # step 2 for render condition
+        # at here we link to logged_user data who made the recipe
+        # name and id
         self.user = User.select_one_id({"id": data["user_id"]})
 
     # CRUD
@@ -40,7 +43,14 @@ class Recipe:
     # Read one
     @classmethod
     def select_one(cls, data):
-        pass
+        query = "SELECT * FROM recipes WHERE id = %(id)s;"
+
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
+
+        if len(results) == 0:
+            return False
+        print(results[0])
+        return Recipe(results[0])
 
     # update
     @classmethod
