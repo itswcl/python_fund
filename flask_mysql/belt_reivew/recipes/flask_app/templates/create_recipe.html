@@ -19,7 +19,7 @@
                         <a class="m-3" href="/logout">Log out</a>
                     </div>
                 </div>
-                <form class="form-group body d-flex justify-content-around">
+                <form action="/recipes/create" method="post" class="form-group body d-flex justify-content-around">
                     <div class="left">
                         <label for="recipe_name">Name</label>
                         <input type="text" name="recipe_name" id="" class="form-control">
@@ -33,12 +33,19 @@
                         <input type="date" name="data_made_on" id="">
                         <div>
                             <label for="under_30">Under 30 Minutes?</label>
-                            <input type="radio" name="under_30" id="" value="yes" checked>
+                            <input type="radio" name="under_30" id="" value="yes">
                             <label for="under_30">Yes</label>
                             <input type="radio" name="under_30" id="" value="no">
                             <label for="under_30">No</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Create</button>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color: red;">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
                     </div>
                 </form>
             </div>

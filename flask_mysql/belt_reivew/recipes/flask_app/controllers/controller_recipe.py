@@ -19,8 +19,21 @@ def dashboard():
         recipes = Recipe.select_all()
         )
 
+# create display
+@app.route("/recipes/form")
+def form_recipe():
+    return render_template("create_recipe.html")
+
 # ----------------------- ACTION ROUTE -----------------------------------------------------
 # create recipe
 @app.route("/recipes/create", methods=["POST"])
 def form_recipe_create():
-    pass
+    if not Recipe.recipe_valida(request.form):
+        return redirect("/recipes/form")
+    data = {
+        **request.form,
+        "user_id": session["uuid"]
+    }
+
+    Recipe.create(data)
+    return redirect("/dashboard")

@@ -13,7 +13,7 @@
             <div class="header d-flex justify-content-between">
                 <h1>Welcome! {{ logged_user.first_name }}</h1>
                 <div class="d-flex justify-content-around">
-                    <a class="m-3" href="recipes/new">Create</a>
+                    <a class="m-3" href="/recipes/form">Create</a>
                     <a class="m-3" href="/logout">Log out</a>
                 </div>
             </div>
@@ -33,7 +33,6 @@
                         <tr>
                             <td>{{ recipe.name }}</td>
                             <td>{{ recipe.under_30 }}</td>
-                            <td>{{ recipe.name }}</td>
                             <td class="d-flex justify-content-around">
                                 <a href="/recipes/{{ recipe.id }}">View instructions</a>
                                 {% if logged_user.id == recipe.user.id %}
