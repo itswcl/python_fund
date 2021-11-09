@@ -34,11 +34,16 @@
                         <div>
                             <label for="under_30">Under 30 Minutes?</label>
                             {% if recipe.under_30 == "yes" %}
-                            {% endif %}
-                            <input type="radio" name="under_30" id="" value="yes">
-                            <label for="under_30">Yes</label>
-                            <input type="radio" name="under_30" id="" value="no">
-                            <label for="under_30">No</label>
+                                <input type="radio" name="under_30" id="" value="yes" checked>
+                                <label for="under_30">Yes</label>
+                                <input type="radio" name="under_30" id="" value="no">
+                                <label for="under_30">No</label>
+                            {% else %}
+                                <input type="radio" name="under_30" id="" value="yes">
+                                <label for="under_30">Yes</label>
+                                <input type="radio" name="under_30" id="" value="no" checked>
+                                <label for="under_30">No</label>
+                            {% endif%}
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                         {% with messages = get_flashed_messages() %}
