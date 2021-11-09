@@ -11,6 +11,7 @@ bcrypt = Bcrypt(app)
 schema_file = "recipes_schema"
 
 class User:
+    schema_file = "recipes_schema"
     def __init__(self, data):
         self.id = data["id"]
         self.first_name = data["first_name"]
@@ -18,38 +19,45 @@ class User:
         self.email = data["email"]
         self.password = data["password"]
 
-    # ADD CURD create update read delete
-    @classmethod # select by EMAIL
-    def select_one_email(self,data):
-        query = "SELECT * FROM users WHERE email = %(email)s"
+    # ADD CRUD create read update delete
 
-        results = connectToMySQL("registration_schema").query_db(query, data)
-
-        if len(results) == 0:
-            return False
-
-        return User(results[0])
-
+    # create user
     @classmethod
-    def select_one_id(self,data):
-        query = "SELECT * FROM users WHERE id = %(id)s"
-
-        results = connectToMySQL("registration_schema").query_db(query, data)
-
-        if len(results) == 0:
-            return False
-
-        return User(results[0])
-
-
-    @classmethod # create user
-    def create_user(self, data):
+    def create_user(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUE (%(first_name)s,%(last_name)s,%(email)s,%(password)s)"
 
-        results = connectToMySQL("registration_schema").query_db(query, data)
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
 
         return results
 
+
+    # read one by email
+    @classmethod # select by EMAIL
+    def select_one_email(cls,data):
+        query = "SELECT * FROM users WHERE email = %(email)s"
+
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
+
+        if len(results) == 0:
+            return False
+
+        return User(results[0])
+
+
+    # read one by id
+    @classmethod
+    def select_one_id(cls,data):
+        query = "SELECT * FROM users WHERE id = %(id)s"
+
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
+
+        if len(results) == 0:
+            return False
+
+        return User(results[0])
+
+
+    # validation for register
     @staticmethod
     def in_valid(post_data):
         is_valid = True
@@ -89,6 +97,7 @@ class User:
 
         return is_valid
 
+    # log in validation
     @staticmethod
     def log_in(post_data):
         user = User.select_one_email({"email": post_data["email"]})
