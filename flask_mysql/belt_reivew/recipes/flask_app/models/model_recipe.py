@@ -55,12 +55,18 @@ class Recipe:
     # update
     @classmethod
     def update(cls, data):
-        pass
+        query = "UPDATE recipes SET name = %(recipe_name)s, description = %(recipe_description)s, under_30 = %(under_30)s, instruction = %(recipe_instruction)s, data_made_on = %(data_made_on)s, updated_at=NOW() WHERE id = %(id)s;"
+
+        results = connectToMySQL(cls.schema_file).query_db(query, data)
+
+        # return the ID of user
+        return results
 
     # delete
     @classmethod
-    def data(cls, data):
-        pass
+    def delete(cls, data):
+        query = "DELETE FROM recipes WHERE id = %(id)s;"
+        connectToMySQL(cls.schema_file).query_db(query, data)
 
     @staticmethod
     def recipe_valida(post_data):

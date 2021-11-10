@@ -4,7 +4,6 @@ from flask_app import app
 from flask_app.models.model_user import User
 from flask_app.models.model_recipe import Recipe
 
-
 # ----------------------- DISPLAY ROUTE -----------------------------------------------------
 # display the user on dashboard
 @app.route("/dashboard")
@@ -40,7 +39,6 @@ def edit_recipe(id):
         recipe = Recipe.select_one({"id": id})
     )
 
-
 # ----------------------- ACTION ROUTE -----------------------------------------------------
 # create recipe
 @app.route("/recipes/create", methods=["POST"])
@@ -53,4 +51,24 @@ def form_recipe_create():
     }
 
     Recipe.create(data)
+    return redirect("/dashboard")
+
+# update recipe
+@app.route("/recipes/<int:id>/update", methods=["POST"])
+def form_recipe_update(id):
+    if not Recipe.recipe_valida(request.form):
+        return redirect(f"/recipes/{id}/edit")
+
+    data = {
+        **request.form,
+        "id": id
+    }
+
+    Recipe.update(data)
+    return redirect("/dashboard")
+
+# delete recipe
+@app.route("/recipes/<int:id>/delete")
+def recipe_delete(id):
+    Recipe.delete({"id": id})
     return redirect("/dashboard")

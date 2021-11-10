@@ -19,7 +19,7 @@
                         <a class="m-3" href="/logout">Log out</a>
                     </div>
                 </div>
-                <form action="/recipes/update" method="post" class="form-group body d-flex justify-content-around">
+                <form action="/recipes/{{ recipe.id }}/update" method="post" class="form-group body d-flex justify-content-around">
                     <div class="left">
                         <label for="recipe_name">Name</label>
                         <input type="text" name="recipe_name" id="" class="form-control" value="{{ recipe.name }}">
