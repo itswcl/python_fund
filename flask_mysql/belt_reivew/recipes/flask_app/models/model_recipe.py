@@ -1,6 +1,6 @@
 from flask.helpers import flash
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models.model_user import User
+from flask_app.models import model_user
 
 class Recipe:
     schema_file = "recipes_schema"
@@ -16,7 +16,12 @@ class Recipe:
         # step 2 for render condition
         # at here we link to logged_user data who made the recipe
         # name and id
-        self.user = User.select_one_id({"id": data["user_id"]})
+
+        if "user" in data:
+            self.user = data["user"] # if user in data which is contain in obj
+        else:   # other contain the user id
+            self.user = model_user.User.select_one_id({"id": data["user_id"]})
+
 
     # CRUD
 

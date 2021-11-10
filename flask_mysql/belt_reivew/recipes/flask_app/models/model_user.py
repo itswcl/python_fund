@@ -1,6 +1,7 @@
 from flask.app import Flask
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
+from flask_app.models import model_recipe
 
 from flask import flash
 import re
@@ -60,14 +61,30 @@ class User:
     # read one by id
     @classmethod
     def select_one_id(cls,data):
-        query = "SELECT * FROM users WHERE id = %(id)s;"
-
+        query = "SELECT * FROM users LEFT JOIN recipes ON users.id = recipes.user_id WHERE users.id = %(id)s;"
         results = connectToMySQL(cls.schema_file).query_db(query, data)
 
-        if len(results) == 0:
+        if len(results) < 1:
             return False
 
-        return User(results[0])
+        user = User(results[0])
+        for row in results:
+
+            row = {
+                "id": row["recipes.id"],
+                "user": user,
+                "name": row["name"],
+                "description": row["description"],
+                "under_30": row["under_30"],
+                "instruction": row["instruction"],
+                "data_made_on": row["data_made_on"],
+                "created_at": row["recipes.created_at"],
+                "updated_at": row["recipes.updated_at"],
+            }
+
+            user.recipes.append(model_recipe.Recipe(row))
+
+        return user
 
 
     # validation for register
