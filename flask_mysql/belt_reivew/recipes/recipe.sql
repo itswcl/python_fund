@@ -1,2 +1,3 @@
 SELECT * FROM users;
-SELECT * FROM recipes;
+SELECT * FROM shows;
+SELECT * FROM users LEFT JOIN shows ON users.id = shows.user_id

@@ -21,7 +21,38 @@
                 </div>
             </div>
             <div class="main">
-                <h3>These are the recipes</h3>
+                <h3>All Recipes</h3>
+                <!-- user info display -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Under 30 minutes?</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for recipe in recipes %}
+                        <tr>
+                            <td>{{ recipe.name }}</td>
+                            <td>{{ recipe.under_30 }}</td>
+                            <td class="d-flex justify-content-around">
+                                <a href="/recipes/{{ recipe.id }}">View instructions</a>
+                                <!-- step 3 for render condition -->
+                                <!-- compared the user id and recipe of user id -->
+                                {% if logged_user.id == recipe.user.id %}
+                                <a href="/recipes/{{ recipe.id }}/edit">Edit</a>
+                                <a href="/recipes/{{ recipe.id }}/delete">Delete</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="main">
+                <h3>Recipes under you</h3>
                 <!-- user info display -->
                 <table class="table">
                     <thead>
@@ -48,7 +79,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </body>
 </html>
