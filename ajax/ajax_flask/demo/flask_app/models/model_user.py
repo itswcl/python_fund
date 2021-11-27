@@ -31,9 +31,9 @@ class User:
         query = '''
                 SELECT * FROM users
                 '''
-        users = []
         results = connectToMySQL(cls.db).query_db(query)
 
+        users = []
         for row in results:
-            users.append(cls(row))
+            users.append(row)
         return users
